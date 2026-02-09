@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.app.name }}
-          image: hashicorp/http-echo:0.3.1
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           args:
             - "-text=Hello from DaemonSet"
           ports:
