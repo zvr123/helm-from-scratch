@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 4helm-deployment
-  namespace: exercise
+  name: {{ .Values.app.name }}-deployment
+  namespace: {{ .Values.namespace }}  #exercise
 spec:
   replicas: {{ .Values.replicaCount }} #2
   selector:
     matchLabels:
-      app: 4helm
+      app: {{ .Values.app.name }}  #4helm
   template:
     metadata:
       labels:
-        app: 4helm
+        app: {{ .Values.app.name }}  #4helm
     spec:
       containers:
-        - name: 4helm
-          image: {{ .Values.image.repository }} #hashicorp/http-echo:0.3.1
+        - name: {{ .Values.app.name }}  #4helm
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }} #hashicorp/http-echo:0.3.1
           args:
             - "-text=Hello from Deployment"
           ports:
