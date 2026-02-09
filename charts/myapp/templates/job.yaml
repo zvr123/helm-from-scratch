@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: 4helm-job
+  namespace: exercise
+spec:
+  template:
+    metadata:
+      labels:
+        app: 4helm
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: 4helm
+          image: hashicorp/http-echo:0.3.1
+          args:
+            - "-text=Hello from Job"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: 4helm-service
+  namespace: exercise
+spec:
+  selector:
+    app: 4helm
+  ports:
+    - port: 80
+      targetPort: 5678
+  type: ClusterIP

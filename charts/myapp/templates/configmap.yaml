@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 4helm-config
+  namespace: exercise
+data:
+  MESSAGE: "Hello from ConfigMap"
