@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: 4helm-config
-  namespace: exercise
+  name: {{ .Values.app.name }}-config
+  namespace: {{ .Values.namespace }}
 data:
   MESSAGE: "Hello from ConfigMap"

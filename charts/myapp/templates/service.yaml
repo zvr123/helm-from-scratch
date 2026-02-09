@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: 4helm-service
-  namespace: exercise
+  name: {{ .Values.app.name }}-service
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: 4helm
+    app: {{ .Values.app.name }}
   ports:
     - port: 80
       targetPort: 5678

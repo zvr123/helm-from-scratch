@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: 4helm-cronjob
-  namespace: exercise
+  name: {{ .Values.app.name }}-cronjob
+  namespace: {{ .Values.namespace }}
 spec:
   schedule: "*/5 * * * *"
   jobTemplate:
@@ -10,11 +10,11 @@ spec:
       template:
         metadata:
           labels:
-            app: 4helm
+            app: {{ .Values.app.name }}
         spec:
           restartPolicy: OnFailure
           containers:
-            - name: 4helm
+            - name: {{ .Values.app.name }}
               image: hashicorp/http-echo:0.3.1
               args:
                 - "-text=Hello from CronJob"
